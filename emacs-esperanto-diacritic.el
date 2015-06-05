@@ -1,0 +1,15 @@
+(defun esperanto-swap-character-if-possible (chr)
+  (cond ((char-equal ?c chr) "ĉ")
+        ((char-equal ?g chr) "ĝ")
+        ((char-equal ?h chr) "ĥ")
+        ((char-equal ?j chr) "ĵ")
+        ((char-equal ?s chr) "ŝ")
+        ((char-equal ?u chr) "ŭ")
+        (t (string chr))))
+
+(defun esperanto-swap-for-diacritics (str)
+  (apply #'concat (mapcar 'swap-character-if-possible str)))
+
+(defun esperanto-swap (str)
+  (interactive "s")
+  (insert (esperanto-swap-for-diacritics str)))
